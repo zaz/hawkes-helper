@@ -3,7 +3,10 @@
 
 $.getScript('https://cdn.jsdelivr.net/npm/@androettop/mathml2latex@1.1.17/lib/mathml2latex.browser.cjs.min.js')
 
-fixEquation  = latex => latex.replace(/ = $/, '')
+fixEquation = latex =>
+	latex.replace(/ = $/, '')
+	     .replace(/\\left/, '')
+	     .replace(/\\right/, '')
 
 let viewProblemInWolframAlpha = () =>
 	window.open('https://www.wolframalpha.com/input?i='+
