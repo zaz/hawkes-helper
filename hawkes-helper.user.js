@@ -6,7 +6,7 @@
 // @author       Zaz Brown; https://github.com/zaz/hawkes-helper
 // @include      *://learn.hawkeslearning.com/*
 // @grant        none
-// @license      Public Domain
+// @license      CC0-1.0
 // ==/UserScript==
 
 // You can copy the line below into the URL bar instead of adding this script to your browser
