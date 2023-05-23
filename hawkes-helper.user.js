@@ -16,8 +16,8 @@ $.getScript('https://cdn.jsdelivr.net/npm/@androettop/mathml2latex@1.1.17/lib/ma
 
 let fixEquation = latex =>
 	latex.replace(/ = $/, '')
-	     .replace(/\\left/, '')
-	     .replace(/\\right/, '')
+	     .replace(/\\left/g, '')
+	     .replace(/\\right/g, '')
 
 let viewProblemInWolframAlpha = () =>
 	window.open(
