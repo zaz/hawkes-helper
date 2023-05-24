@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         hawkes-helper
 // @namespace    https://github.com/zaz/hawkes-helper
-// @version      0.2
+// @version      0.3
 // @description  Open a problem in Wolfram Alpha by pressing Alt + q
 // @author       Zaz Brown; https://github.com/zaz/hawkes-helper
 // @include      *://learn.hawkeslearning.com/*
@@ -18,6 +18,7 @@ let fixEquation = latex =>
 	latex.replace(/ = $/, '')
 	     .replace(/\\left/g, '')
 	     .replace(/\\right/g, '')
+	     .replace(/^{′}/g, '′')
 
 let viewProblemInWolframAlpha = () =>
 	window.open(
