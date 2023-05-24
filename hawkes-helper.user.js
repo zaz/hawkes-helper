@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         hawkes-helper
 // @namespace    https://github.com/zaz/hawkes-helper
-// @version      0.3
+// @version      0.4
 // @description  Open a problem in Wolfram Alpha by pressing Alt + q
 // @author       Zaz Brown; https://github.com/zaz/hawkes-helper
 // @include      *://learn.hawkeslearning.com/*
@@ -20,15 +20,20 @@ let fixEquation = latex =>
 	     .replace(/\\right/g, '')
 	     .replace(/^{′}/g, '′')
 
+// removes duplicates from an array, removing leftmost ones first
+let deduplicate = arr =>
+	Array.from(new Set( arr.reverse() )).reverse()
+
 let viewProblemInWolframAlpha = () =>
 	window.open(
 		'https://www.wolframalpha.com/input?i=' +
 		encodeURIComponent(
-			$(".MathJax").map((_, e) => $(e).data("mathml"))
-			             .get()
-			             .map(mathml2latex.convert)
-			             .map(fixEquation)
-			             .join(",  ")
+			deduplicate(
+				$(".MathJax").map((_, e) => $(e).data("mathml"))
+					     .get()
+					     .map(mathml2latex.convert)
+					     .map(fixEquation)
+			).join(",  ")
 		)
 	)
 
